@@ -16,12 +16,19 @@ export class TestDataService {
   }
   itemdata: ItemModel[] = [
     {
-      title: "Profile Image",
+      title: "Fb Profile",
       description: "First Facebook Profile Picture",
       timeStamp: this.currentTimeStamp,
       image: "assets/images/user.png",
       url: "https://m.facebook.com/home.php",
     },
+    {
+      title: "Twitter Profile",
+      description: "Twitter Profile Picture",
+      timeStamp: this.currentTimeStamp,
+      image: "assets/images/user.png",
+      url: "https://twitter.com/home",
+    }
   ];
   addNewItem(newItem: ItemModel) {
     this.itemdata.unshift(newItem);
