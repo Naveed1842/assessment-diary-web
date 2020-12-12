@@ -1,0 +1,29 @@
+<div style="padding-top:30px;width: 100%;">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Url</th>
+      <th scope="col">Image</th>
+      <th scope="col">Time Stamp</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let diary of itemList; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ diary.title}}</td>
+      <td>{{ diary.description}}</td>
+      <td><a href="{{diary.url}}">
+        {{diary.url}}
+      </a></td>
+      <td>
+        <img [src]="diary.image" class="mr-2" style="width: 30px;height: 30px;" alt="Server is not Up">
+        <!-- {{ diary.image }}-->
+      </td>
+      <td>{{ diary.timeStamp|date}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

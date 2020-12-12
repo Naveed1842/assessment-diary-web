@@ -1,0 +1,74 @@
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-10 mx-auto">
+            <form [formGroup]="formGroup">
+                <div class="row" style="padding: 10px;">
+                    <div class="form-section-heading">
+                        Create Diary
+                    </div>
+                    <div style="flex: 1;">
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-8">
+                        <label for="Title">Title</label>
+                        <input type="text" class="form-control" id="Title" formControlName="title">
+                        <div>
+                            <mat-error *ngIf="isControlHasError('title','required')">
+                                Title is required *
+                           </mat-error>
+                           <mat-error *ngIf="isControlHasError('title','minlength')">
+                               Must be atleast 3 characters long
+                           </mat-error>
+                           <mat-error *ngIf="isControlHasError('title','maxlength')">
+                               Must not be more than 50 characters
+                           </mat-error>   
+                        </div>
+                        <label for="url">URL</label>
+                        <div>
+                            <mat-error *ngIf="isControlHasError('url','required')">
+                                Valid Url is required *
+                           </mat-error>
+                           <mat-error *ngIf="isControlHasError('url','pattern')">
+                               Please Enter Valid Url
+                       </mat-error>                       
+                        </div>
+                        <input type="url" class="form-control" pattern="https?://.+" id="url" formControlName="url" required>
+                        <label for="Description">Description</label>
+                        <textarea type="text" class="form-control" id="description"
+                            formControlName="description"></textarea>
+                    </div>
+                        
+                    <div class="col-sm-4 col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                        <div class="form-group">
+                            <fieldset class="form-group">
+                                <span style="color:black;font-size: 15px;margin-left:100px" class="removeBtn">Add
+                                    Image</span>
+                                <div class="fileInputProfileWrap">
+                                    <div class="img-space">
+                                        <input type="file" name="companyLogo" (change)="fileChangeEvent($event)"
+                                            class="fileInputProfile">
+                                        <ng-container *ngIf="isImageSaved; else elseTemplate">
+                                            <img [src]="cardImageBase64" />
+                                        </ng-container>
+                                        <ng-template #elseTemplate>
+                                            <img src="assets/images/user.png" class="img-responsive">
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <span style="color:red;font-size: 15px;margin-left:100px"
+                                    class="removeBtn">{{imageError}}</span>
+                            </fieldset>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px;float: right;">
+                        <button  type="button"  style="margin-left: 10px;" class="btn btn-secondary px-4" (click)="cancelItem()">Cancel</button>
+                        <button style="margin-left: 20px;"  type="button" class="btn btn-primary px-4" (click)="saveItem()" [disabled]="!formGroup.valid">Save</button>
+                    </div>   
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

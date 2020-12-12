@@ -1,0 +1,9 @@
+.nav-link {
+  font-size: large;
+  cursor: pointer;
+  padding-left: 30px;
+}
+
+.navbar-light .navbar-nav .nav-link.active {
+  color: #007ACC
+}

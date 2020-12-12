@@ -1,0 +1,314 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+// import configuration from the theme builder
+
+@import "~bootstrap/dist/css/bootstrap.css";
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+}
+
+.page-toolbar {
+    height: 47px !important;
+    width: 100%;
+    background-color: #f5f5f5 !important;
+    border-bottom: solid 1px #e0e0e0;
+    padding-left: 24px !important;
+}
+
+.form-page {
+    margin-top: 15px;
+    margin-bottom: 25px;
+    padding: 5px;
+    display: inline-block;
+    width: 85%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    .inline-section {
+        display: flex !important;
+    }
+}
+
+.list-page {
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.page-container {
+    text-align: center;
+    overflow: auto;
+    padding-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.full-width-field {
+    width: 100%;
+}
+
+.k-notification-group {
+    z-index: 10000 !important;
+    margin-top: 65px;
+    margin-right: 10px;
+    font-size: 16px !important;
+}
+
+.k-notification-wrap {
+    font-size: 16px !important;
+    padding: 10px !important;
+}
+
+.k-icon {
+    font-size: 20px !important;
+}
+
+.form-section-label {
+    font-weight: 500;
+}
+
+.form-section-label {
+    text-align: left;
+}
+
+.spacer {
+    flex: 1 auto;
+}
+
+.page-details-header {
+    height: 70px;
+    font-size: 1.1rem;
+    .header-row {
+        margin-bottom: 5px;
+    }
+}
+
+.form-title {
+    //margin-left: 15px;
+    margin-top: 15px;
+    font-size: 1.5rem;
+    font-weight: lighter;
+}
+
+.events-section {
+    font-size: 1rem;
+    height: 75vh;
+    background-color: whitesmoke;
+    .heading {
+        font-size: 1.1rem;
+        font-weight: normal;
+    }
+}
+
+.dialog-title {
+    font-size: 18px;
+    line-height: 1.3em;
+}
+
+.action-button {
+    width: 100px;
+    margin-left: 10px;
+}
+
+.cell {
+    .heading {
+        color: blueviolet;
+        font-weight: bold;
+    }
+    .light-heading {
+        color: blueviolet;
+        font-weight: normal;
+    }
+    .itemLabel {
+        font-style: italic;
+        color: gray;
+        font-size: 0.9rem;
+        margin-right: 5px;
+    }
+    .itemValue {
+        color: black;
+        font-size: 0.9rem;
+        margin-right: 5px;
+    }
+}
+
+.link {
+    cursor: pointer;
+}
+
+.propertyTitle {
+    font-weight: 400;
+    background-color: gray;
+    color: white;
+}
+
+.propertyValue {
+    background-color: whitesmoke;
+}
+
+.propertyValue .big {
+    font-size: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.sectionSubTitle {
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+
+.menu-btn {
+    width: 100%;
+}
+
+.red {
+    color: red;
+}
+
+.idealCycle {
+    background-color: green !important;
+    color: white
+}
+
+.slowCycle {
+    background-color: #03adfc !important;
+    color: white
+}
+
+.availabilityLoss {
+    background-color: #fcc203 !important;
+    color: white
+}
+
+.standBy {
+    background-color: lightblue !important;
+}
+
+.microStop {
+    background-color: #03fc5e !important;
+    color: white
+}
+
+.statsProperty {
+    background-color: beige;
+}
+
+.statsValue {
+    background-color: ghostwhite;
+    color: gray;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.statsValue-small {
+    background-color: whitesmoke;
+    color: gray;
+    font-style: italic;
+    font-size: 1.0rem;
+}
+
+.production-page {
+    color: white;
+}
+
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 80px;
+    line-height: 10px;
+    /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+    height: 80px !important;
+    line-height: 10px;
+    margin-bottom: 20px;
+    /* Vertically center the text there */
+    background-color: #f5f5f5;
+}
+
+.black {
+    background-color: black;
+}
+
+.prod-menu-option {
+    text-align: center;
+    background-color: #ABA3A3;
+    color: black;
+    width: 250px;
+    height: 70px;
+    margin-top: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 15px;
+    font-weight: 500;
+}
+
+.green {
+    background-color: #50D56B !important;
+}
+
+.red-background {
+    background-color: red !important;
+}
+
+.yellow {
+    background-color: yellow !important;
+}
+
+.action {
+    background-color: #EB4C4A !important;
+}
+
+.bigger {
+    margin-top: -5px;
+    font-size: 2.5rem;
+}
+
+.big {
+    font-size: 2.0rem;
+}
+
+.bolder {
+    font-weight: 600;
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.k-icon-32 {
+    font-size: 32px;
+    /* Sets icon size to 32px */
+}
+
+.k-icon-48 {
+    font-size: 48px;
+    /* Sets icon size to 48px */
+}
+
+.k-icon-64 {
+    font-size: 64px;
+    /* Sets icon size to 64px */
+}
+
+.production-label {
+    background-color: #E6EBF5;
+    color: black;
+    text-align: center;
+}
