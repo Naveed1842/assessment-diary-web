@@ -17,7 +17,7 @@ export class TestDataService {
   itemdata: ItemModel[] = [
     {
       title: "Fb Profile",
-      description: "First Facebook Profile Picture",
+      description: "Facebook Profile Picture",
       timeStamp: this.currentTimeStamp,
       image: "assets/images/user.png",
       url: "https://m.facebook.com/home.php",
@@ -26,8 +26,22 @@ export class TestDataService {
       title: "Twitter Profile",
       description: "Twitter Profile Picture",
       timeStamp: this.currentTimeStamp,
-      image: "assets/images/user.png",
+      image: "assets/images/user02.jpg",
       url: "https://twitter.com/home",
+    },
+    {
+      title: "LinkedIn Profile",
+      description: "Linkedin Profile ",
+      timeStamp: this.currentTimeStamp,
+      image: "assets/images/user03.jpg",
+      url: "https://www.linkedin.com/",
+    },
+    {
+      title: "Instagram Profile",
+      description: "Instagram Profile Picture",
+      timeStamp: this.currentTimeStamp,
+      image: "assets/images/user01.jpg",
+      url: "https://www.instagram.com/",
     }
   ];
   addNewItem(newItem: ItemModel) {
@@ -43,7 +57,7 @@ export class TestDataService {
     this.dataTransMission.next({ addItem: true });
   }
 
-  //In real word use case;
+  //In real word use case only for demonstration purpose;
   public postForm(body: any): Observable<any> {
     return this.http.post("apiUrl", body, this.multiPartReqheaders);
   }
