@@ -131,6 +131,7 @@ export class DiaryCreateEditComponent implements OnInit {
       this.testDataService.addNewItem(this.formGroup.value);
       this.route.navigateByUrl("/diary");
     }
+    //In real world app it will done using below formData and postForm methods;
   }
   /**
    * Checking control validation
