@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { NavigationExtras, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { ItemModel } from "src/app/core/models/item-interfaces";
 import { TestDataService } from "src/app/core/test-data.service";
 
@@ -21,12 +21,7 @@ export class DiaryListComponent implements OnInit {
         this.itemList = null; 
         setTimeout(() => (this.itemList = this.testDataService.getData()), 100);
       }
-    });
-    
-  }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.itemList.push(filterValue.trim().toLowerCase());
+    }); 
   }
   deletItem(item: ItemModel){
     this.testDataService.deleteItem(item);
