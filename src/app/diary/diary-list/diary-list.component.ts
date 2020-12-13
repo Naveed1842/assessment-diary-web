@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { NavigationExtras, Router } from "@angular/router";
+import { ItemModel } from "src/app/core/models/item-interfaces";
 import { TestDataService } from "src/app/core/test-data.service";
 
 @Component({
@@ -17,18 +18,22 @@ export class DiaryListComponent implements OnInit {
     this.itemList = this.testDataService.getData();
     this.testDataService.dataTransMission.subscribe((message) => {
       if (message.addItem) {
-        this.itemList = null;
+        this.itemList = null; 
         setTimeout(() => (this.itemList = this.testDataService.getData()), 100);
       }
     });
+    
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.itemList.push(filterValue.trim().toLowerCase());
   }
-  // deletItem(item: ItemModel){
-  //   this.testDataService.deleteItem(item);
-  // }
+  deletItem(item: ItemModel){
+    this.testDataService.deleteItem(item);
+  }
+  edit(item: ItemModel){
+    this.router.navigate(["/", "diary", item.uuid, "edit"]);
+  }
   onNewBtnClick() {
     this.router.navigate(["/", "diary", "0", "edit"]);
   }

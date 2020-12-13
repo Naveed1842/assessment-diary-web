@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import * as _ from "lodash";
 import { TestDataService } from "src/app/core/test-data.service";
 @Component({
@@ -11,18 +11,31 @@ import { TestDataService } from "src/app/core/test-data.service";
 export class DiaryCreateEditComponent implements OnInit {
   formGroup: FormGroup;
   imageError: string;
-  isImageSaved: boolean;
-  cardImageBase64: string;
+  isImageSaved: boolean=false;
+  imageSourceUrl:string;
+  editMode:boolean=false;
+  recordUpdateItem:string="";
   urlPattern = "(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?";
-
   constructor(
     private fb: FormBuilder,
     private testDataService: TestDataService,
-    private route: Router
+    private route: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    let serverData=this.testDataService.getData();
     this.createForm();
+    this.activatedRoute.params.subscribe((params) => {
+      if (params["id"] != 0) {
+        this.isImageSaved=true;
+        this.editMode=true;
+        this.recordUpdateItem=params["id"];
+       let itemToUpdate=serverData.filter(item=>item.uuid==params["id"]);
+        this.populateForm(itemToUpdate);
+      }
+    });
+    
   }
   createForm() {
     this.formGroup = this.fb.group({
@@ -44,9 +57,17 @@ export class DiaryCreateEditComponent implements OnInit {
         ]),
       ],
       timeStamp: Date.now(),
+      uuid:this.getRandomInt(6)
     });
   }
-
+  getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+  populateForm(value) {
+    
+    this.imageSourceUrl=value[0].image;
+    this.formGroup.patchValue(value[0]);
+  }
   fileChangeEvent(fileInput: any) {
     this.imageError = null;
     if (fileInput.target.files && fileInput.target.files[0]) {
@@ -70,7 +91,7 @@ export class DiaryCreateEditComponent implements OnInit {
         image.onload = (rs) => {
           const img_height = rs.currentTarget["height"];
           const img_width = rs.currentTarget["width"];
-          console.log(img_height, img_width);
+          //console.log(img_height, img_width);
           if (img_height > max_height && img_width > max_width) {
             this.imageError =
               "Maximum dimentions allowed " +
@@ -80,8 +101,7 @@ export class DiaryCreateEditComponent implements OnInit {
               "px";
             return false;
           } else {
-            const imgBase64Path = e.target.result;
-            this.cardImageBase64 = imgBase64Path;
+            this.imageSourceUrl = e.target.result;
             this.isImageSaved = true;
             const file = fileInput.target.files[0];
             this.formGroup.get("image").setValue(file);
@@ -95,10 +115,22 @@ export class DiaryCreateEditComponent implements OnInit {
     if (this.formGroup.invalid) {
       return;
     }
-    this.testDataService.addNewItem(this.formGroup.value);
-    this.route.navigateByUrl("/diary");
-    /*In real word App here we will call the backend rest api*/
-    /*Please see the last two function for Idea*/
+    if(this.editMode==true){
+      let updateItem={
+        uuid:this.recordUpdateItem,
+        title:this.formGroup.value.title,
+        description:this.formGroup.value.description,
+        timeStamp:Date.now(),        
+        image:this.formGroup.value.image,
+        url:this.formGroup.value.url,
+      }
+      this.testDataService.updateItem(updateItem);
+      this.route.navigateByUrl("/diary");
+    }
+    else{
+      this.testDataService.addNewItem(this.formGroup.value);
+      this.route.navigateByUrl("/diary");
+    }
   }
   /**
    * Checking control validation
@@ -115,8 +147,8 @@ export class DiaryCreateEditComponent implements OnInit {
       control.hasError(validationType) && (control.dirty || control.touched);
     return result;
   }
-   /*Just for demonstration purpose*/
-   formData() {
+  /*Just for demonstration purpose*/
+  formData() {
     const formData = new FormData();
     let formValue = this.formGroup.value;
     formData.append("image", this.formGroup.get("image").value);
@@ -135,5 +167,4 @@ export class DiaryCreateEditComponent implements OnInit {
   cancelItem() {
     this.route.navigateByUrl("/diary");
   }
-
 }

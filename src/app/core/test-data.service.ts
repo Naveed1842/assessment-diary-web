@@ -10,12 +10,10 @@ export class TestDataService {
   public httpOptions;
   dataTransMission: Subject<any> = new Subject<any>();
   currentTimeStamp = Date.now();
-  constructor(protected http: HttpClient) {}
-  getData() {
-    return this.itemdata;
-  }
+
   itemdata: ItemModel[] = [
     {
+      uuid: "10101010",
       title: "Fb Profile",
       description: "Facebook Profile Picture",
       timeStamp: this.currentTimeStamp,
@@ -23,6 +21,7 @@ export class TestDataService {
       url: "https://m.facebook.com/home.php",
     },
     {
+      uuid: "20202020",
       title: "Twitter Profile",
       description: "Twitter Profile Picture",
       timeStamp: this.currentTimeStamp,
@@ -30,6 +29,7 @@ export class TestDataService {
       url: "https://twitter.com/home",
     },
     {
+      uuid: "30303030",
       title: "LinkedIn Profile",
       description: "Linkedin Profile ",
       timeStamp: this.currentTimeStamp,
@@ -37,24 +37,41 @@ export class TestDataService {
       url: "https://www.linkedin.com/",
     },
     {
+      uuid: "40404040",
       title: "Instagram Profile",
       description: "Instagram Profile Picture",
       timeStamp: this.currentTimeStamp,
       image: "assets/images/user01.jpg",
       url: "https://www.instagram.com/",
-    }
+    },
   ];
-  addNewItem(newItem: ItemModel) {
+  constructor(protected http: HttpClient) {}
+
+getData() {
+    return this.itemdata;
+  }
+  
+addNewItem(newItem: ItemModel) {
     this.itemdata.unshift(newItem);
     this.dataTransMission.next({ addItem: true });
   }
-  deleteItem(deletionItem: ItemModel) {
+deleteItem(deletionItem: ItemModel) {
     for (let i = 0; i < this.itemdata.length; i++) {
-      if (this.itemdata[i].description == deletionItem.description) {
+      if (this.itemdata[i].uuid == deletionItem.uuid) {
         this.itemdata.splice(i, 1);
       }
     }
     this.dataTransMission.next({ addItem: true });
+  }
+updateItem(updateItem: ItemModel) {
+    //currently update list of array;
+    let objIndex = this.itemdata.findIndex((obj => obj.uuid == updateItem.uuid));
+     this.itemdata[objIndex].uuid=updateItem.uuid;
+     this.itemdata[objIndex].title=updateItem.title;
+     this.itemdata[objIndex].description=updateItem.description;
+     this.itemdata[objIndex].timeStamp=updateItem.timeStamp;
+     this.itemdata[objIndex].image=updateItem.image;
+     this.dataTransMission.next({ addItem: true });
   }
 
   //In real word use case only for demonstration purpose;

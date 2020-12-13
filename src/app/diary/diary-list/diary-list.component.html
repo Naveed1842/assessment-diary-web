@@ -8,6 +8,8 @@
       <th scope="col">Url</th>
       <th scope="col">Image</th>
       <th scope="col">Time Stamp</th>
+      <th scope="col">Edit</th>           
+      <th scope="col">Delete</th>           
     </tr>
     </thead>
     <tbody>
@@ -17,12 +19,23 @@
       <td>{{ diary.description}}</td>
       <td><a href="{{diary.url}}">
         {{diary.url}}
-      </a></td>
+      </a>
+    </td>
       <td>
         <img [src]="diary.image" class="mr-2" style="width: 30px;height: 30px;" alt="Server is not Up">
         <!-- {{ diary.image }}-->
       </td>
       <td>{{ diary.timeStamp|date}}</td>
+      <td >
+        <button (click)="edit(diary)">
+          Edit
+        </button>
+      </td>
+      <td>
+        <button (click)="deletItem(diary)">
+          Delete
+        </button>
+      </td>
     </tr>
     </tbody>
   </table>
