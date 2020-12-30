@@ -1,0 +1,63 @@
+<div class="wrapper">
+
+    <section class="grid-container">
+        <!--firs row-->
+        <button class="item" (click)="getOperator('SIN()')">SIN</button>
+        <button class="item" (click)="getOperator('COS()')">COS</button>
+        <button class="item" (click)="getOperator('TAN()')">TAN</button>
+        <button class="item" (click)="getOperator('SQRT')">SQRT</button>
+        <button class="item" (click)="getOperator('log')">log</button>
+        <button class="item" (click)="getOperator('ln')">ln</button>
+        <!--2ndrow-->
+        <button class="item" (click)="getOperator('exp')">exp</button>
+        <button class="item" (click)="getOperator('exp10')">exp10</button>
+        <button class="item" (click)="getOperator('x**n')">x**n</button>
+        <button class="item" (click)="getOperator('(')">(</button>
+        <button class="item" (click)="getOperator(')')">)</button>
+        <button class="item item-clear" (click)="clear()">CLEAR</button>
+        <!--3rd row-->
+        <button class="item " (click)="getOperator('&&')">AND</button>
+        <button class="item item-2" (click)="getOperator('6')">6</button>
+        <button class="item item-2" (click)="getOperator('7')">7</button>
+        <button class="item item-2" (click)="getOperator('8')">8</button>
+        <button class="item item-2" (click)="getOperator('9')">9</button>
+        <button class="item item-2" (click)="getOperator('*')">*</button>
+        <!--4th row-->
+        <button class="item item-6" (click)="getOperator('||')">OR</button>
+        <button class="item item-2" (click)="getOperator('2')">2</button>
+        <button class="item item-2" (click)="getOperator('3')">3</button>
+        <button class="item item-2" (click)="getOperator('4')">4</button>
+        <button class="item item-2" (click)="getOperator('5')">5</button>
+        <button class="item item-2" (click)="getOperator('-')">-</button>
+        <!--5th row-->
+        <button class="item " (click)="getOperator('!')">NOT</button>
+        <button class="item item-2" (click)="getOperator('0')">0</button>
+        <button class="item item-2" (click)="getOperator('1')">1</button>
+        <button class="item item-2" (click)="getOperator('.')">.</button>
+        <button class="item item-2" (click)="getOperator('/')">/</button>
+        <button class="item item-2" (click)="getOperator('+')">+</button>
+        <!--6th row-->
+        <button class="item" (click)="getOperator('==')">==</button>
+        <button class="item" (click)="getOperator(LessThanOperator)">{{LessThanOperator}}</button>
+        <button class="item" (click)="getOperator('>')">></button>
+        <button class="item" (click)="getOperator(LessThanEqualOperator)">{{LessThanEqualOperator}}</button>
+        <button class="item" (click)="getOperator('>=')"> >=</button>
+        <button class="item item-enter" (click)="save()">ENTER</button>
+    </section>
+    <section class="input-area">
+        <!-- <span><strong>Expression</strong></span> -->
+        <div class="inputTypeExpression">
+            <input type="text" class="inputStyle" [value]="selectedExpression" />
+            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        </div>
+        <!-- <span>setup as condition</span> -->
+        <div class="inputTypeExpression">
+            <!-- <span><strong>Primary Action Expression(Then)</strong></span> -->
+            <input type="text" class="inputStyle" [value]="primaryActionExpression" />
+        </div>
+        <div class="inputTypeExpression">
+            <!-- <span><strong>Alternate Expression (Else)</strong></span> -->
+            <input type="text" class="inputStyle" [value]="alternateExpression" />
+        </div>
+    </section>
+</div>

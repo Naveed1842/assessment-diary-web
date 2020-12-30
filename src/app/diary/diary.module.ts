@@ -6,9 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExportDataAsJsonComponent } from './export-data-as-json/export-data-as-json.component';
+import { GridCalculatorComponent } from './grid-calculator/grid-calculator.component';
 
 @NgModule({
-  declarations: [DiaryListComponent, DiaryCreateEditComponent, ExportDataAsJsonComponent],
+  declarations: [DiaryListComponent, DiaryCreateEditComponent, ExportDataAsJsonComponent, GridCalculatorComponent],
   imports: [
     SharedModule,
     ReactiveFormsModule,
@@ -16,7 +17,7 @@ import { ExportDataAsJsonComponent } from './export-data-as-json/export-data-as-
     RouterModule.forChild([
       {
         path: '',
-        component: DiaryListComponent
+        component: GridCalculatorComponent
       },
       {
         path:'export',
