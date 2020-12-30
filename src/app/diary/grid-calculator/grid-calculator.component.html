@@ -1,3 +1,4 @@
+
 <div class="wrapper">
 
     <section class="grid-container">
@@ -45,19 +46,29 @@
         <button class="item item-enter" (click)="save()">ENTER</button>
     </section>
     <section class="input-area">
-        <!-- <span><strong>Expression</strong></span> -->
+         <span><strong>Expression</strong></span>
+
         <div class="inputTypeExpression">
-            <input type="text" class="inputStyle" [value]="selectedExpression" />
+            <input type="text" class="inputStyle" 
+            [ngClass]="{'greenClass':enable==ACTIVE_OPTIONS.Expression?true:false}"
+            (focus)="addElement(ACTIVE_OPTIONS.Expression)"
+            [value]="selectedExpression" />
             <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
         </div>
-        <!-- <span>setup as condition</span> -->
+            <span>setup as condition</span> 
         <div class="inputTypeExpression">
-            <!-- <span><strong>Primary Action Expression(Then)</strong></span> -->
-            <input type="text" class="inputStyle" [value]="primaryActionExpression" />
+            <span><strong>Primary Action Expression(Then)</strong></span> 
+            <input type="text" class="inputStyle" 
+            (focus)="addElement(ACTIVE_OPTIONS.PrimaryActionExpression)"
+            [ngClass]="{'greenClass':enable==ACTIVE_OPTIONS.PrimaryActionExpression?true:false}"
+            [value]="primaryActionExpression" />
         </div>
         <div class="inputTypeExpression">
-            <!-- <span><strong>Alternate Expression (Else)</strong></span> -->
-            <input type="text" class="inputStyle" [value]="alternateExpression" />
+            <span><strong>Alternate Expression (Else)</strong></span> 
+            <input type="text" class="inputStyle" 
+            (focus)="addElement(ACTIVE_OPTIONS.AlternateExpression)"
+            [ngClass]="{'greenClass':enable==ACTIVE_OPTIONS.AlternateExpression?true:false}"
+            [value]="alternateExpression" />
         </div>
     </section>
 </div>
