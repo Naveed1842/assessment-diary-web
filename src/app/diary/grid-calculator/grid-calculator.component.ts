@@ -11,7 +11,7 @@ export enum ACTIVE_OPTIONS {
 })
 export class GridCalculatorComponent implements OnInit {
   ACTIVE_OPTIONS = ACTIVE_OPTIONS;
-  enable: ACTIVE_OPTIONS;
+  enable:ACTIVE_OPTIONS=ACTIVE_OPTIONS.Expression;
   LessThanOperator = "<";
   LessThanEqualOperator = "<=";
   selectedExpression = "POR<10";
@@ -20,7 +20,7 @@ export class GridCalculatorComponent implements OnInit {
   isSetAutoFocus: boolean = false;
   constructor() {}
   ngOnInit(): void {
-    this.enable = ACTIVE_OPTIONS.Expression;
+    //this.enable = ACTIVE_OPTIONS.Expression;
     this.addElement(this.enable);
   }
 
